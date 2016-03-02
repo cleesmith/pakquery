@@ -1,0 +1,58 @@
+{
+	"ImportPath": "github.com/cleesmith/pakquery",
+	"GoVersion": "go1.5",
+	"Deps": [
+		{
+			"ImportPath": "github.com/go-sql-driver/mysql",
+			"Comment": "v1.2-112-gfb72997",
+			"Rev": "fb7299726d2e68745a8805b14f2ff44b5c2cfa84"
+		},
+		{
+			"ImportPath": "github.com/gorilla/context",
+			"Rev": "215affda49addc4c8ef7e2534915df2c8c35c6cd"
+		},
+		{
+			"ImportPath": "github.com/gorilla/securecookie",
+			"Rev": "e95799a481bbcc3d01c2ad5178524cb8bec9f370"
+		},
+		{
+			"ImportPath": "github.com/gorilla/sessions",
+			"Rev": "f7261893ca3ea922c30eabe742c036d2c1de6e0a"
+		},
+		{
+			"ImportPath": "github.com/haisum/recaptcha",
+			"Rev": "87a43201fb69733960f03f68adc412ca512a0139"
+		},
+		{
+			"ImportPath": "github.com/jmoiron/sqlx",
+			"Comment": "sqlx-v1.1-47-gad7f264",
+			"Rev": "ad7f2641d00865a3d5b860ccdade6f8e63dbdae6"
+		},
+		{
+			"ImportPath": "github.com/josephspurrier/csrfbanana",
+			"Rev": "1d6998d1aadfb8292322ed4cb2bbb88d5054092e"
+		},
+		{
+			"ImportPath": "github.com/julienschmidt/httprouter",
+			"Comment": "v1.1-10-g77a895a",
+			"Rev": "77a895ad01ebc98a4dc95d8355bc825ce80a56f6"
+		},
+		{
+			"ImportPath": "github.com/justinas/alice",
+			"Rev": "82db91fe6d1db4c070fed544cb5d0b5cc08fe276"
+		},
+		{
+			"ImportPath": "golang.org/x/crypto/bcrypt",
+			"Rev": "c8b9e6388ef638d5a8a9d865c634befdc46a6784"
+		},
+		{
+			"ImportPath": "golang.org/x/crypto/blowfish",
+			"Rev": "c8b9e6388ef638d5a8a9d865c634befdc46a6784"
+		},
+		{
+			"ImportPath": "gopkg.in/olivere/elastic.v3",
+			"Comment": "v3.0.19",
+			"Rev": "65591c469d0f15e465dd0fb805da088831366f69"
+		}
+	]
+}

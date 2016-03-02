@@ -1,0 +1,102 @@
+{{define "title"}}pakquery{{end}}
+{{define "head"}}
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 10px;
+}
+</style>
+{{end}}
+
+{{define "content"}}
+<div class="container">
+
+<h1>Help</h1>
+
+<div class="alert alert-warning">
+  <h4>Elasticsearch version: {{.esVersion}}</h4>
+  <h4>Lucene version: {{.luceneVersion}}</h4>
+  <h4>Config setting for MaxSearchResults: {{.maxSearchResults}}</h4>
+</div>
+<hr />
+
+<h3>Search queries are similar to Kibana's discover feature</h3>
+<div class="alert alert-info">
+  <h4>Search using URL query</h4>
+  <blockquote>
+    <p>
+      http://localhost:8080/records<b>?q=</b>hostile
+      <br />
+      http://localhost:8080/records<b>?q=</b>driveby AND nuclear AND <b>sport:</b>49593
+    </p>
+  </blockquote>
+  <h4>Search using form</h4>
+  <blockquote>
+    <p>
+      hostile
+      <br />
+      driveby AND nuclear AND <b>sport:</b>49593
+      <br />
+      <b>indexed_at:</b>[2016-02-28T00:00:00 TO 2016-02-29T23:59:59]
+      <br />
+      <b>@timestamp:</b>[2016-02-28T00:00:00 TO 2016-02-29T23:59:59]
+    </p>
+  </blockquote>
+  <h4 style="font-size:small;">
+    <strong>
+      - all results on the Records page are displayed in descending order by <b>@timestamp</b> (which is when the unified2 alert was triggered)
+    </strong>
+  </h4>
+  <h4 style="font-size:small;">
+    <strong>
+      - any/all fields may be searched, or specific field names may be used for searches
+      (like <b>sport:</b>)
+    </strong>
+  </h4>
+  <h4 style="font-size:small;">
+    <strong>
+      - all searches use
+      <a href="https://lucene.apache.org/core/2_9_4/queryparsersyntax.html" target="_blank">Lucene's query parser syntax</a>
+      and
+      <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html" target="_blank">Elasticsearch's query string query</a>
+      (without the JSON)
+    </strong>
+  </h4>
+</div>
+<hr />
+
+<h3>Configuration</h3>
+<div class="alert alert-success">
+  <h4>edit <b>config/config.json</b> to change Elasticsearch and web server settings</h4>
+  <blockquote>
+    <pre>
+{
+  "Elasticsearch": {
+    "EsHostPort": "http://127.0.0.1:9200",
+    "EsIndex": "unifiedbeat-*",
+    "MaxSearchResults": 100
+  },
+  "Server": {
+    "Hostname": "",
+    "UseHTTP": true,
+    "UseHTTPS": false,
+    "HTTPPort": 8080,
+    "HTTPSPort": 443,
+    "CertFile": "tls/server.crt",
+    "KeyFile": "tls/server.key"
+  },
+. . .
+    </pre>
+  </blockquote>
+</div>
+<hr />
+
+</div>
+{{end}}
+
+{{define "foot"}}
+  {{template "footer" .}}
+{{end}}

@@ -1,0 +1,97 @@
+{{define "title"}}pakquery{{end}}
+{{define "head"}}
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#records').DataTable( {
+        "order": [[ 2, "desc" ]],
+        // https://datatables.net/reference/option/dom
+        // "dom": '<"top"f>rt<"bottom"pli><"clear">'
+        "dom":  "<'row'<'col-sm-12'f>>" +
+                "<'row'<'col-sm-12'tr>>" +
+                "<'row'<'col-sm-3'l><'col-sm-2'i><'col-sm-7'p>>",
+        // http://legacy.datatables.net/usage/i18n#oLanguage.sSearch
+        "oLanguage": { "sSearch": "Filter results:" }
+    } );
+} );
+</script>
+
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 10px;
+}
+</style>
+{{end}}
+
+{{define "content"}}
+
+<div class="container-fluid">
+
+  {{ if .error }}
+    <div class="alert alert-danger">
+      <p>ERROR: {{.errMsg}}</p>
+    </div>
+  {{ end }}
+
+  <form class="form-inline" method="post" style="margin-bottom:2px;">
+    <div class="input-group">
+      <span class="input-group-btn">
+        <button class="btn btn-primary" type="button submit">search</button>
+      </span>
+      <input type="text" class="form-control" id="q" name="q" size="150" placeholder="search query" value="{{.q}}" />
+    </div>
+  </form>
+
+  <table id="records" class="table table-striped table-bordered table-condensed" border="2" cellspacing="3" cellpadding="3" width="100%">
+    <thead>
+      <tr>
+        <th colspan="10">
+          found {{.totalHits}} matching unified2 records for query "{{.q}}"
+        </th>
+      </tr>
+      <tr>
+        <th>type</th>
+        <th>ID</th>
+        <th>timestamp</th>
+        <th>sensor</th>
+        <th>src IP</th>
+        <th>sport</th>
+        <th>dst IP</th>
+        <th>dport</th>
+        <th>proto</th>
+        <th>message</th>
+      </tr>
+    </thead>
+    {{ range $n, $hit := .matches }}
+      <tr>
+        <td>
+          <a href="/recordshow?esindex=&quot;{{$hit.Index}}&quot;&amp;esid=&quot;{{$hit.Id}}&quot;&amp;eventid={{$hit.EventId}}&amp;eventsecond={{$hit.EventSecond}}">
+            {{$hit.RecordType}}
+          </a>
+        </td>
+        <td style="text-align:right;">{{$hit.EventId}}</td>
+        <td style="white-space:nowrap;">{{$hit.Timestamp.Format "2006-01-02T15:04:05.000Z"}}</td>
+        <td>{{$hit.SensorId}}</td>
+        <td style="text-align:right;">{{$hit.SrcIP}}</td>
+        <td style="text-align:left;">
+          {{ if gt $hit.SPort 0 }} {{$hit.SPort}} {{ end }}
+        </td>
+        <td style="text-align:right;">{{$hit.DstIP}}</td>
+        <td style="text-align:left;">
+          {{ if gt $hit.DPort 0 }} {{$hit.DPort}} {{ end }}
+        </td>
+        <td style="text-align:right;">{{$hit.Protocol}}</td>
+        <td>{{$hit.Signature}}</td>
+      </tr>
+    {{ end }}
+  </table>
+
+</div>
+{{end}}
+
+{{define "foot"}}
+  {{template "footer" .}}
+{{end}}

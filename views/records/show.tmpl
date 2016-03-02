@@ -1,0 +1,145 @@
+{{define "title"}}pakquery{{end}}
+{{define "head"}}
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 10px;
+}
+</style>
+{{end}}
+
+{{define "content"}}
+
+<div class="container-fluid">
+
+{{ if .error }}
+  <div class="panel panel-danger">
+    <div class="panel-heading">
+      <h3 class="panel-title">Error</h3>
+    </div>
+    <div class="panel-body">
+      <p>{{.errMsg}}</p>
+    </div>
+  </div>
+{{ end }}
+
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h3 class="panel-title">ElasticSearch info for selected <strong>{{.recordType}}</strong> record</h3>
+  </div>
+  <div class="panel-body">
+    <dl class="dl-horizontal">
+      <dt>_id</dt><dd><strong>{{.id}}</strong></dd>
+      <dt>_index</dt><dd><strong>{{.index}}</strong></dd>
+    </dl>
+  </div>
+</div>
+
+<div class="panel panel-danger">
+  <div class="panel-heading">
+    <h3 class="panel-title">Event details&nbsp;&nbsp;<em class="small text-muted">(count: {{len .EventRecs}})</em></h3>
+  </div>
+  <div class="panel-body">
+    {{ range $n, $event := .EventRecs }}
+      <dl class="dl-horizontal">
+        <dt>record_type</dt><dd>{{$event.RecordType}}</dd>
+        <dt>event_id</dt><dd>{{$event.EventId}}</dd>
+        <dt>seconds</dt><dd>{{$event.EventSecond}}&nbsp;&nbsp;&nbsp;&nbsp;<em class="text-muted">(seconds since unix epoch)</em></dd>
+        <dt>microseconds</dt><dd>{{$event.EventMicrosecond}}</dd>
+        <dt>@timestamp</dt><dd>{{$event.Timestamp}}</dd>
+        <dt>indexed_at</dt><dd>{{$event.IndexedAt}}</dd>
+        <dt>priority</dt><dd>{{$event.Priority}}</dd>
+        <dt>classification_id</dt><dd>{{$event.ClassificationId}}</dd>
+        <dt>generator_id</dt><dd>{{$event.GeneratorId}}</dd>
+        <dt>signature_id</dt><dd>{{$event.SignatureId}}</dd>
+        <dt>signature_revision</dt><dd>{{$event.SignatureRevision}}</dd>
+        <dt class="bg-danger">signature</dt><dd><strong>{{$event.Signature}}</strong></dd>
+        <dt>rule_raw</dt><dd>{{$event.RuleRaw}}</dd>
+        <dt>rule_source_file</dt><dd>{{$event.RuleSourceFile}}</dd>
+        <dt>rule_source_file_line#</dt><dd>{{$event.RuleSourceFileLineNumber}}&nbsp;&nbsp;&nbsp;&nbsp;<em class="text-muted">(rule_source_file_line_number)</em></dd>
+        <dt>protocol</dt>
+        <dd style="margin-bottom:2px;">
+          <strong>{{$event.Protocol}}</strong>
+          &nbsp;&nbsp;
+          <a class="btn btn-default btn-xs" href="https://en.wikipedia.org/wiki/List_of_IP_protocol_numbers" target="_blank" role="button">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            lookup
+          </a>
+        </dd>
+        <dt class="bg-danger text-muted">Source IP</dt><dd>&nbsp;</dd>
+        <dt class="bg-danger">src_ip</dt>
+        <dd>
+          <strong>{{$event.SrcIP}}</strong>
+          <a class="btn btn-default btn-xs" href="https://who.is/whois-ip/ip-address/{{$event.SrcIP}}" target="_blank" role="button">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            whois
+          </a>
+        </dd>
+        <dt class="bg-danger">sport</dt><dd><strong>{{$event.SPort}}</strong></dd>
+        <dt class="bg-danger">src_country_code</dt><dd>{{$event.SrcCountryCode}}</dd>
+        <dt class="bg-danger">src_location</dt><dd>{{$event.SrcLocation}}</dd>
+        <dt class="bg-warning text-muted">Destination IP</dt><dd>&nbsp;</dd>
+        <dt class="bg-warning">dst_ip</dt>
+        <dd>
+          <strong>{{$event.DstIP}}</strong>
+          <a class="btn btn-default btn-xs" href="https://who.is/whois-ip/ip-address/{{$event.DstIP}}" target="_blank" role="button">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            whois
+          </a>
+        </dd>
+        <dt class="bg-warning">dport</dt><dd><strong>{{$event.DPort}}</strong></dd>
+        <dt class="bg-warning">dst_country_code</dt><dd>{{$event.DstCountryCode}}</dd>
+        <dt class="bg-warning">dst_location</dt><dd>{{$event.DstLocation}}</dd>
+        <dt class="bg-info text-muted">Sensor</dt><dd>&nbsp;</dd>
+        <dt>sensor_id</dt><dd>{{$event.SensorId}}</dd>
+        <dt>sensor_hostname</dt><dd>{{$event.SensorHostname}}</dd>
+        <dt>sensor_interface</dt><dd>{{$event.SensorInterface}}</dd>
+        <dt>sensor_type</dt><dd>{{$event.SensorType}}</dd>
+        <dt>input_type</dt><dd>{{$event.InputType}}</dd>
+        <dt>source</dt><dd>{{$event.Source}}</dd>
+        <dt>source_offset</dt><dd>{{$event.SourceOffset}}</dd>
+        <dt>blocked</dt><dd>{{$event.Blocked}}</dd>
+        <dt>impact</dt><dd>{{$event.Impact}}</dd>
+        <dt>impact_flag</dt><dd>{{$event.ImpactFlag}}</dd>
+        <dt>mpls_label</dt><dd>{{$event.MplsLabel}}</dd>
+        <dt>vlan_id</dt><dd>{{$event.VlanId}}</dd>
+      </dl>
+    {{end}}
+  </div>
+</div>
+
+<div class="panel panel-warning">
+  <div class="panel-heading">
+    <h3 class="panel-title">Packet details&nbsp;&nbsp;<em class="small text-muted">(count: {{len .PacketRecs}})</em></h3>
+  </div>
+  <div class="panel-body">
+    {{ range $n, $packet := .PacketRecs }}
+      <dl class="dl-horizontal">
+        <dt>record_type</dt><dd>{{$packet.RecordType}}</dd>
+        <dt>event_id</dt><dd>{{$packet.EventId}}</dd>
+        <dt>event seconds</dt><dd>{{$packet.EventSecond}}&nbsp;&nbsp;&nbsp;&nbsp;<em class="text-muted">(seconds since unix epoch)</em></dd>
+        <dt>packet_second</dt><dd>{{$packet.PacketSecond}}</dd>
+        <dt>packet_microsecond</dt><dd>{{$packet.PacketMicrosecond}}</dd>
+        <dt>@timestamp</dt><dd>{{$packet.Timestamp}}</dd>
+        <dt>indexed_at</dt><dd>{{$packet.IndexedAt}}</dd>
+        <dt>input_type</dt><dd>{{$packet.InputType}}</dd>
+        <dt>source</dt><dd>{{$packet.Source}}</dd>
+        <dt>source_offset</dt><dd>{{$packet.SourceOffset}}</dd>
+        <dt class="bg-primary text-muted">packet_dump</dt><dd>&nbsp;</dd>
+        <dt>&nbsp;</dt><dd><pre>{{$packet.PacketDump}}</pre></dd>
+      </dl>
+      <hr />
+    {{end}}
+  </div>
+</div>
+
+</div> <!-- <div class="container-fluid"> -->
+
+{{end}}
+
+{{define "foot"}}
+  {{template "footer" .}}
+{{end}}

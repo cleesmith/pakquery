@@ -1,0 +1,129 @@
+{{define "title"}}pakquery{{end}}
+{{define "head"}}
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 10px;
+}
+</style>
+{{end}}
+
+{{define "content"}}
+<div class="container">
+
+{{ if gt .sigBucketCount 0 }}
+  <table border="2" cellspacing="3" cellpadding="3">
+    <thead>
+      <tr><th colspan="2"><h4>Top {{.sigTerm}}</h4></th></tr>
+      <tr><th>count</th><th>signature</th></tr>
+    </thead>
+    {{ range $n, $bucket := .sigBuckets }}
+      <tr>
+        <td style="text-align:right;">{{ $bucket.DocCount }}</td>
+        <td>
+          <a href="/records?q=signature.raw:&quot;{{$bucket.Key}}&quot;">{{$bucket.Key}}</a>
+        </td>
+      </tr>
+    {{ end }}
+  </table>
+{{else}}
+  <strong>{{.sigMsg}}</strong>
+{{ end }}
+<hr />
+
+<div class="row">
+  <div class="col-md-4">
+    {{ if gt .sipBucketCount 0 }}
+      <table border="2" cellspacing="3" cellpadding="3">
+        <thead>
+          <tr><th colspan="2"><h4>Top {{.sipTerm}}</h4></th></tr>
+          <tr><th>count</th><th>source IP</th></tr>
+        </thead>
+        {{ range $n, $bucket := .sipBuckets }}
+          <tr>
+            <td style="text-align:right;">{{ $bucket.DocCount }}</td>
+            <td>
+              <a href="/records?q=src_ip:{{$bucket.Key}}">{{$bucket.Key}}</a>
+            </td>
+          </tr>
+        {{ end }}
+      </table>
+    {{else}}
+      <strong>{{.sipMsg}}</strong>
+    {{ end }}
+  </div>
+  <div class="col-md-4">
+    {{ if gt .dipBucketCount 0 }}
+      <table border="2" cellspacing="3" cellpadding="3">
+        <thead>
+          <tr><th colspan="2"><h4>Top {{.dipTerm}}</h4></th></tr>
+          <tr><th>count</th><th>destination IP</th></tr>
+        </thead>
+        {{ range $n, $bucket := .dipBuckets }}
+          <tr>
+            <td style="text-align:right;">{{ $bucket.DocCount }}</td>
+            <td>
+              <a href="/records?q=dst_ip:{{$bucket.Key}}">{{$bucket.Key}}</a>
+            </td>
+          </tr>
+        {{ end }}
+      </table>
+    {{else}}
+      <strong>{{.dipMsg}}</strong>
+    {{ end }}
+  </div>
+</div>
+<hr />
+
+<div class="row">
+  <div class="col-md-4">
+    {{ if gt .sccBucketCount 0 }}
+      <table border="2" cellspacing="3" cellpadding="3">
+        <thead>
+          <tr><th colspan="2"><h4>Top {{.sccTerm}}</h4></th></tr>
+          <tr><th>count</th><th>country</th></tr>
+        </thead>
+        {{ range $n, $bucket := .sccBuckets }}
+          <tr>
+            <td style="text-align:right;">{{ $bucket.DocCount }}</td>
+            <td>
+              <a href="/records?q=src_country_code.raw:&quot;{{$bucket.Key}}&quot;">{{$bucket.Key}}</a>
+            </td>
+          </tr>
+        {{ end }}
+      </table>
+    {{else}}
+      <strong>{{.sccMsg}}</strong>
+    {{ end }}
+  </div>
+  <div class="col-md-4">
+    {{ if gt .dccBucketCount 0 }}
+      <table border="2" cellspacing="3" cellpadding="3">
+        <thead>
+          <tr><th colspan="2"><h4>Top {{.dccTerm}}</h4></th></tr>
+          <tr><th>count</th><th>country</th></tr>
+        </thead>
+        {{ range $n, $bucket := .dccBuckets }}
+          <tr>
+            <td style="text-align:right;">{{ $bucket.DocCount }}</td>
+            <td>
+              <a href="/records?q=dst_country_code.raw:&quot;{{$bucket.Key}}&quot;">{{$bucket.Key}}</a>
+            </td>
+          </tr>
+        {{ end }}
+      </table>
+    {{else}}
+      <strong>{{.dccMsg}}</strong>
+    {{ end }}
+  </div>
+</div>
+
+</div>
+{{end}}
+
+{{define "foot"}}
+  {{template "footer" .}}
+{{end}}
