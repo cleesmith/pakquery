@@ -13,6 +13,10 @@ import (
 	"github.com/cleesmith/pakquery/shared/view/plugin"
 )
 
+// unused except to track releases:
+// var Name = "pakquery"
+// var Version = "1.0.0"
+
 // config the settings variable
 var config = &configuration{}
 
