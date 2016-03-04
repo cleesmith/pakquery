@@ -56,4 +56,12 @@ browse to http://host:8080/
   * click a record to get the full details
 
 ***
+
+#### ToDo
+
+* handle osquery logs (_HIDS feature_)
+* pivot from full details page to session transcript (_if appropriate_)
+  * generate transcript using tcpdump and tcpflow
+
+***
 ***
