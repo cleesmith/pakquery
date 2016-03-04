@@ -18,7 +18,12 @@ edit config.json
 ```
 * the downloaded tarball includes:
   * **pakquery** - the executable binary for Linux 64bit (_linux amd64_)
-  * **static** - folder of web assets: css and javascript files
+  * **static** - folder of web assets (_mostly css and javascript files_)
+    * from https://www.datatables.net/download/index including:
+      * jQuery v2.2.0
+      * Bootstrap v3.3.6
+      * DataTables 1.10.11
+      * DataTables Bootstrap 3 integration
   * **views** - html templates used by pakquery
 
 ***
