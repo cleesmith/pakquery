@@ -9,7 +9,7 @@
 * Built using Go 1.6 and tested on Ubuntu 14.04.3
 * Download and install:
 ```
-pakquery_v1.0.0.tar.gz
+wget https://github.com/cleesmith/pakquery/releases/download/v1.0.0/pakquery_v1.0.0.tar.gz
 tar -zxvf pakquery_v1.0.0.tar.gz
 cd pakquery_v1.0.0
 edit config.json
