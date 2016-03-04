@@ -4,7 +4,7 @@
 
 ***
 
-#### Usage
+#### Installation and usage
 
 * Built using Go 1.6 and tested on Ubuntu 14.04.3
 * Download and install:
