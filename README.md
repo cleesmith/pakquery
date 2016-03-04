@@ -60,6 +60,7 @@ browse to http://host:8080/
 #### ToDo
 
 * handle [osquery](https://osquery.io/) logs (_HIDS feature_)
+  * via a new menu tab, as logs are very different from unified2 records
 * pivot from full details page to session transcript (_if appropriate_)
   * generate transcript using tcpdump and tcpflow
   * same as Sguil and CapME
