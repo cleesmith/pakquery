@@ -6,7 +6,7 @@
 
 ***
 
-#### Installation and usage
+### Installation and usage
 
 ##### download tarball and install
 
