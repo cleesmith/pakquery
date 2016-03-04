@@ -6,6 +6,24 @@
 
 ##### Usage
 
+* Built using Go 1.6 and tested on Ubuntu 14.04.3
+* Download and install:
+```
+pakquery_v1.0.0.tar.gz
+tar -zxvf pakquery_v1.0.0.tar.gz
+cd pakquery_v1.0.0
+edit config.json
+./pakquery
+```
+##### the downloaded tarball includes:
+* pakquery - the executable binary
+* static - folder of web assets: css and javascript files
+* views - html templates used by pakquery
+
+***
+
+#### or to build from source:
+
 * ```cd $GOPATH```
 * ```git clone https://github.com/cleesmith/pakquery```
 * ```cd pakquery```
