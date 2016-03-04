@@ -38,6 +38,8 @@ edit config.json
 * **./pakquery**
 * browse to ```http://host:8080/```
 
+***
+
 #### Features
 
 * fast access to the unified2 records as indexed into Elasticsearch using Unifiedbeat
