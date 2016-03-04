@@ -7,7 +7,8 @@
 
 xpakquery
 pakquery
-pakquery_linux64
+*darwin*
+*linux*
 pakquery.test
 pakquery.exe
 pakquery.test.exe
@@ -17,3 +18,4 @@ build
 var/log
 cls*
 capme
+releases
