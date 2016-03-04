@@ -17,9 +17,9 @@ edit config.json
 ./pakquery
 ```
 * the downloaded tarball includes:
-  * pakquery - the executable binary for Linux 64bit (_linux amd64_)
-  * static - folder of web assets: css and javascript files
-  * views - html templates used by pakquery
+  * **pakquery** - the executable binary for Linux 64bit (_linux amd64_)
+  * **static** - folder of web assets: css and javascript files
+  * **views** - html templates used by pakquery
 
 ***
 
