@@ -38,12 +38,12 @@ edit config.json
 * **./pakquery**
 * browse to ```http://host:8080/```
 
-##### Features
+#### Features
 
 * fast access to the unified2 records as indexed into Elasticsearch using Unifiedbeat
-* Overview page with **top** counts linked to the matching records
+* an overview page with **top** counts linked to the matching records
 * Records page
-  * search via URL or the simple form
+  * search via URL or an HTML form
   * search queries are similar to Kibana's discover feature
   * click a record to get the full details
 
