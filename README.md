@@ -59,9 +59,10 @@ browse to http://host:8080/
 
 #### ToDo
 
-* handle osquery logs (_HIDS feature_)
+* handle [osquery](https://osquery.io/) logs (_HIDS feature_)
 * pivot from full details page to session transcript (_if appropriate_)
   * generate transcript using tcpdump and tcpflow
+  * same as Sguil and CapME
 
 ***
 ***
