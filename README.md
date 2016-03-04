@@ -8,7 +8,8 @@
 
 #### Installation and usage
 
-* Download and install:
+##### download tarball and install
+
 ```
 wget https://github.com/cleesmith/pakquery/releases/download/v1.0.0/pakquery_v1.0.0.tar.gz
 tar -zxvf pakquery_v1.0.0.tar.gz
@@ -16,7 +17,7 @@ cd pakquery_v1.0.0
 edit config.json
 ./pakquery
 ```
-* the downloaded tarball includes:
+* tarball file includes:
   * **pakquery** - the executable binary for Linux 64bit (_linux amd64_)
   * **views** - html templates used by pakquery
   * **static** - folder of web assets (_mostly css and javascript files_)
@@ -26,9 +27,7 @@ edit config.json
       * DataTables 1.10.11
       * DataTables Bootstrap 3 integration
 
-***
-
-#### or to build from source:
+##### or build from source
 
 * ```cd $GOPATH```
 * ```git clone https://github.com/cleesmith/pakquery```
