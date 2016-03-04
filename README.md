@@ -16,6 +16,7 @@ tar -zxvf pakquery_v1.0.0.tar.gz
 cd pakquery_v1.0.0
 edit config.json
 ./pakquery
+browse to http://host:8080/
 ```
 * tarball file includes:
   * **pakquery** - the executable binary for Linux 64bit (_linux amd64_)
