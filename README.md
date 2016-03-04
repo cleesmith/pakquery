@@ -15,10 +15,10 @@ cd pakquery_v1.0.0
 edit config.json
 ./pakquery
 ```
-##### the downloaded tarball includes:
-* pakquery - the executable binary
-* static - folder of web assets: css and javascript files
-* views - html templates used by pakquery
+* the downloaded tarball includes:
+  * pakquery - the executable binary
+  * static - folder of web assets: css and javascript files
+  * views - html templates used by pakquery
 
 ***
 
